@@ -64,3 +64,17 @@ class Line:
                 self.pt_samples = pt_samples
 
         return self.model_coef, self.inliers, self.pt_samples
+
+    def inlier_outlier(self, pts, residual_threshold):
+
+        n_points = pts.shape[0]
+        Z_points = np.dot(self.coef_matrix(pts), self.model_coef)
+        dist_pt = Z_points - pts[:,2]
+
+        # Select indexes where distance is biggers than the threshold
+        pt_id_inliers = np.where(np.abs(dist_pt) <= residual_threshold)[0]
+
+        inliers = np.zeros(n_points, dtype=bool)
+        inliers[pt_id_inliers] = True
+
+        return inliers
