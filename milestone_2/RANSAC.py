@@ -65,6 +65,42 @@ class Line:
 
         return self.model_coef, self.inliers, self.pt_samples
 
+    def fit_gap(self, pts_a, pts_b, pts_gap, residual_threshold=0.2):
+        """
+        Find the best equation for the 3D line. The line in a 3d enviroment is defined as y = Ax+B, but A and B are vectors intead of scalars.
+        :param pts: 3D point cloud as a `np.array (N,3)`.
+        :param residual_threshold: Threshold distance from the line which is considered inlier.
+        :param max_trials: Number of maximum iteration which RANSAC will loop over.
+        :returns:
+        - `A`: 3D slope of the line (angle) `np.array (1, 3)`
+        - `B`: Axis interception as `np.array (1, 3)`
+        - `inliers`: Inlier's index from the original point cloud. `np.array (1, M)`
+        ---
+        """
+        n_points = pts_gap.shape[0]
+        best_inliers = []
+        pt_samples = np.vstack([pts_a,pts_b])
+
+        # The plane defined by three points
+        A = self.coef_matrix(pt_samples)
+        C = np.linalg.lstsq(A, pt_samples[:,2])[0]
+
+        # Distance from a point to fitted plane
+        pt_id_inliers = []  # list of inliers ids
+        Z_points = np.dot(self.coef_matrix(pts_gap), C)
+        dist_pt = Z_points - pts_gap[:,2]
+
+        # Select indexes where distance is biggers than the threshold
+        pt_id_inliers = np.where(np.abs(dist_pt) <= residual_threshold)[0]
+
+        best_inliers = pt_id_inliers
+        self.inliers = np.zeros(n_points, dtype=bool)
+        self.inliers[best_inliers] = True
+        self.model_coef = C
+        self.pt_samples = pt_samples
+
+        return self.model_coef, self.inliers, self.pt_samples
+
     def inlier_outlier(self, pts, residual_threshold):
 
         n_points = pts.shape[0]
