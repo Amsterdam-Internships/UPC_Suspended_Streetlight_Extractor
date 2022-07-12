@@ -37,13 +37,11 @@ bgt_colors = {'boom': 'green',
 cloud_colors = {'Unlabelled': 'lightgrey',
                 'Ground': 'peru',
                 'Building': 'lightblue',
-                'Tree': 'green',
-                'Street light': 'orange',
-                'Traffic sign': 'crimson',
-                'Traffic light': 'red',
-                'City bench': 'darkviolet',
-                'Rubbish bin': 'pink',
-                'Car': 'grey',
+                'Cable': 'green',
+                'Light cable': 'green',
+                'Tram cable': 'yellow',
+                'Suspended streetlight': 'red',
+                'Sky': 'whitesmoke',
                 'Noise': 'whitesmoke'}
 
 
@@ -95,8 +93,8 @@ def plot_ahn_merged(tilecode, ahn_reader):
     ax1.set_title(f'AHN tile {tilecode}', fontsize=14)
     plt.show()
 
-def plot_cloud_slice(las_file, ahn_reader, plane_height=1.5, hide_noise=False,
-                     ax=None, title=None, legend_below=False):
+def plot_cloud_slice(las_file, ahn_reader, min_plane_height=4, max_plane_height=12,
+                     hide_noise=False, ax=None, title=None, legend_below=False):
     full_plot = False
     if ax is None:
         fig, ax = plt.subplots(1, constrained_layout=True)
@@ -114,8 +112,8 @@ def plot_cloud_slice(las_file, ahn_reader, plane_height=1.5, hide_noise=False,
                                       np.ones((len(points),), dtype=bool),
                                       'ground_surface')
 
-    plane_mask = ((points[:, 2] >= points_z + plane_height - 0.05)
-                  & (points[:, 2] <= points_z + plane_height + 0.05))
+    plane_mask = ((points[:, 2] >= points_z + min_plane_height)
+                  & (points[:, 2] <= points_z + max_plane_height))
     label_set = np.unique(labels[plane_mask])
 
     for label in label_set:
@@ -213,13 +211,14 @@ def plot_bag_bgt(tilecode, building_file=None, tram_file=None, ax=None, title=No
 
 def plot_bgt_bag_and_cloudslice(tilecode, las_file, ahn_reader,
                             building_file=None, tram_file=None,
-                            plane_height=1.5, hide_noise=False):
+                            min_plane_height=4, max_plane_height=12,
+                            hide_noise=False):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5.5))
     plot_bag_bgt(tilecode, building_file, tram_file, title='BGT data', ax=ax1,
              legend_below=True)
-    plot_cloud_slice(las_file, ahn_reader, plane_height=plane_height,
-                     hide_noise=hide_noise, title='LAS labels', ax=ax2,
-                     legend_below=True)
+    plot_cloud_slice(las_file, ahn_reader, min_plane_height=min_plane_height,
+                     max_plane_height=max_plane_height, hide_noise=hide_noise,
+                     title='LAS labels', ax=ax2, legend_below=True)
     ax2.set_yticklabels([])
     ax2.yaxis.label.set_visible(False)
     fig.suptitle(f'Tile {tilecode}', fontsize=14)

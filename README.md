@@ -8,6 +8,12 @@ This repository contains methods for the **automatic detection and extraction of
 
 Example [notebooks](notebooks) are provided to demonstrate the tools.
 
+<figure align="center">
+  <img
+  src="media/examples/demo.gif"
+  alt="Example: automatic detection of suspended streetlights in a point cloud.">
+  <figcaption><b>Example:</b> automatic detection of suspended streetlights, and cables.</figcaption>
+</figure>
 
 ---
 
@@ -23,11 +29,11 @@ For a quick dive into this repository take a look at our [complete solution note
 
 ## Folder Structure
 
- * [`demo_dataset`](./datasets) _Demo dataset to get started_
-   * [`ahn`](./datasets/ahn) _AHN data_
-   * [`bag`](./datasets/bgt) _BAG data_
-   * [`bgt`](./datasets/bgt) _BGT data_
-   * [`pointcloud`](./datasets/pointcloud) _Example urban point cloud_
+ * [`demo_dataset`](./demo_datasets) _Demo dataset to get started_
+   * [`ahn`](./demo_datasets/ahn) _AHN data_
+   * [`bag`](./demo_datasets/bag) _BAG data_
+   * [`bgt`](./demo_datasets/bgt) _BGT data_
+   * [`pointcloud`](./demo_datasets/pointcloud) _Example urban point cloud_
  * [`notebooks`](./notebooks) _Jupyter notebook tutorials_
  * [`src`](./src) _Python source code_
    * [`stages`](./src/stages) _Stage code_
@@ -41,14 +47,15 @@ For a quick dive into this repository take a look at our [complete solution note
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/Amsterdam-AI-Team/Urban_PointCloud_Processing.git
+    git clone https://github.com/Amsterdam-Internships/UPC_Suspended_Streetlight_Extractor.git
     ```
 
-2. Install all dependencies:
+2. Install all dependencies (requires Python >=3.8):
     ```bash
     pip install -r requirements.txt
     ```
     Additionally, install `cccorelib` and `pycc` by following the [instructions on their GitHub page](https://github.com/tmontaigu/CloudCompare-PythonPlugin/blob/master/docs/building.rst#building-as-indenpendent-wheels).
+    Optionally install JupyterLab to use the notebooks `python -m pip install jupyterlab ipympl ipywidgets`
 
 3. Check out the [notebooks](notebooks) for a demonstration.
 

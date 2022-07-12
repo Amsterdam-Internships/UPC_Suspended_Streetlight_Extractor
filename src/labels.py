@@ -20,12 +20,12 @@ class Labels:
                 11: 'Cable',
                 12: 'Light cable',
                 13: 'Tram cable',
-                15: 'Armatuur',
-                16: 'Armatuur',
-                17: 'Armatuur',
-                18: 'Armatuur',
-                19: 'Armatuur',
-                20: 'Armatuur',
+                15: 'Suspended streetlight',
+                16: 'Suspended streetlight',
+                17: 'Suspended streetlight',
+                18: 'Suspended streetlight',
+                19: 'Suspended streetlight',
+                20: 'Suspended streetlight',
                 99: 'Noise'}
 
     @staticmethod
