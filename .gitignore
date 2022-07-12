@@ -8,6 +8,12 @@
 *.TIF
 *.png
 
+# Demo tiles re-include
+!*2397_9705.laz
+!*2397_9705.npz
+!demo_dataset/bag/*.csv
+!demo_dataset/bgt/*.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
