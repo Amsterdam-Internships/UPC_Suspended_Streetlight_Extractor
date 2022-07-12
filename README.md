@@ -65,7 +65,7 @@ For a quick dive into this repository take a look at our [complete solution note
 
 We provide tutorial [notebooks](notebooks) that demonstrate how the tools can be used.
 
-For visualisation of the resulting labelled point clouds we suggest [CloudCompare](https://www.danielgm.net/cc/). Simply open the labelled .laz in CloudCompare, select the cloud, and set `Colors` to the custom `Scalar Field` named `label`. For best results, use our [custom "AMS" color scale](https://github.com/Amsterdam-AI-Team/Urban_PointCloud_Processing/raw/main/media/cc_color_scale.xml), and set "steps" to 101.
+For visualisation of the resulting labelled point clouds we suggest [CloudCompare](https://www.danielgm.net/cc/). Simply open the labelled .laz in CloudCompare, select the cloud, and set `Colors` to the custom `Scalar Field` named `label`. For best results, use our [custom "AMS - All" color scale](https://github.com/Amsterdam-Internships/UPC_Suspended_Streetlight_Extractor/raw/main/media/cc_color_scale.xml), and set "steps" to 101.
 
 ---
 
