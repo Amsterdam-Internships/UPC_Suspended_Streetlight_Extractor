@@ -1,4 +1,4 @@
-# Urban PointCloud Processing
+# Urban Point Cloud Suspended Streetlight and Cable Extraction
 
 This repository contains methods for the **automatic detection and extraction of Urban PointClouds**. The methods can serve as inspiration, or can be applied as-is under some specific assumptions:
 
