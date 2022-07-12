@@ -13,13 +13,11 @@ Example [notebooks](notebooks) are provided to demonstrate the tools.
 
 ## Project Goal
 
-The goal of this project is to automatically locate and classify various assets such as trees, street lights, traffic signs, and other street furniture in street level point clouds. A typical approach would be to build and train a machine learning classier, but this requires a rich labeled dataset to train on. One of the main challenges in working with 3D point cloud data is that, in contrast to 2D computer vision, _no general-purpose training sets are available_. Moreover, the sparsity and non-uniform density of typical point clouds makes transferring results form one task to another difficult.
+The goal of this project is to automatically detect and extract suspended streetlights and cables in street level point clouds. A typical approach would be to build and train a machine learning classier, but this requires a rich labeled dataset to train on. One of the main challenges in working with 3D point cloud data is that, in contrast to 2D computer vision, _no general-purpose training sets are available_. Moreover, the sparsity and non-uniform density of typical point clouds makes transferring results form one task to another difficult.
 
-However, since we are working with urban street level data, we do have access to a large number of public datasets and registries that we can use to start labeling and create an initial training set. This repository contains several **data fusion** methods that combine public datasets such as elevation data, building footprints, and topographic registries to automatically label point clouds.
+This repository contains a four-staged pipeline that combine public datasets such as elevation data, building footprints, to reduce the search space and detect suspended streetlights and cables.
 
-We also provide some **post-processing** methods that further fine-tune the labels. For example, we use region growing to extend the facade of buildings to include protruding elements such as balconies and canopies that are not included in the building footprint.
-
-For a quick dive into this repository take a look at our [complete solution notebook](notebooks/0.%20Complete%20solution.ipynb).
+For a quick dive into this repository take a look at our [complete solution notebook](notebooks/Complete%20solution.ipynb).
 
 ---
 
