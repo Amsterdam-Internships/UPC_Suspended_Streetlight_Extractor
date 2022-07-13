@@ -1,0 +1,17 @@
+folium==0.12.0
+laspy[lazrs]==2.0.2
+loess==2.1.2
+matplotlib==3.3.4
+numba==0.53.1
+numpy==1.20.2
+open3d==0.15.1
+OWSLib==0.25.0
+pandas==1.3.2
+pyntcloud==0.1.6
+requests==2.27.1
+scikit_learn==1.1.1
+scipy==1.6.2
+Shapely==1.7.1
+tifffile==2021.6.14
+tqdm==4.61.0
+zarr==2.8.3
